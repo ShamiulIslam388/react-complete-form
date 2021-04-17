@@ -12,6 +12,21 @@ export const FormProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let data = {
+      firstName,
+      lastName,
+      comment,
+      gender,
+      option,
+      checked
+    };
+    console.log(data);
+    setFirstName("");
+    setLastName("");
+    setComment("");
+    setGender("");
+    setOption("");
+    setChecked(false);
   };
   return (
     <FormContext.Provider
