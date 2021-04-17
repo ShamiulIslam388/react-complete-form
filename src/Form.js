@@ -2,7 +2,21 @@ import React, { useContext } from "react";
 import { FormContext } from "./FormProvider";
 
 const Form = () => {
-  const { formData, handleChange, handleSubmit } = useContext(FormContext);
+  const {
+    firstName,
+    lastName,
+    comment,
+    option,
+    checked,
+    setFirstName,
+    setLastName,
+    setComment,
+    setOption,
+    setChecked,
+    setGender,
+    handleSubmit
+  } = useContext(FormContext);
+
   return (
     <div className="App">
       <h2>React Complete form Demo</h2>
@@ -10,40 +24,39 @@ const Form = () => {
         <label>First Name</label>
         <input
           type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
+          value={firstName}
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
         />
         <label>Last Name</label>
         <input
           type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <label>comment</label>
         <textarea
-          name="comment"
-          value={formData.comment}
-          onChange={handleChange}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         />
         <div>
           <input
             type="radio"
             name="gender"
             value="male"
-            onChange={handleChange}
+            onChange={(e) => setGender(e.target.value)}
           />
           Male
           <input
             type="radio"
             name="gender"
             value="female"
-            onChange={handleChange}
+            onChange={(e) => setGender(e.target.value)}
           />
           Female
         </div>
-        <select name="option" onChange={handleChange}>
+        <select onChange={(e) => setOption(e.target.value)}>
           <option value="programming">Programming</option>
           <option value="graphic design">Graphic Design</option>
           <option value="game development">Game Development</option>
@@ -51,8 +64,8 @@ const Form = () => {
         <div>
           <input
             type="checkbox"
-            value={formData.checked}
-            onChange={handleChange}
+            value={checked}
+            onChange={(e) => setChecked(e.target.checked)}
           />
           Agree it
         </div>
